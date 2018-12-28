@@ -9,9 +9,6 @@
   /** Number of ticks during which the page content was partially visible */
   let totalVisibleTicks = 0;
 
-  const CONTAINER_CLASSNAME = "container-div";
-  const CONTAINER_CLASSNAME_OFFSET = "container-div container-div_offset";
-
   let containerDiv  = document.getElementById('container-div');
   let clickMoveDiv  = document.getElementById('click-move-div');
   let totalTimeSpan = document.getElementById('total-time-span');
@@ -71,15 +68,6 @@
         visibleTicksSpan.textContent = sToTimeString(totalVisibleTicks);
       }
   }, 1000);
-
-  // Toggle the container's offset when clicked
-  clickMoveDiv.addEventListener('click', function() {
-      if (containerDiv.className === CONTAINER_CLASSNAME) {
-          containerDiv.className = CONTAINER_CLASSNAME_OFFSET;
-      } else {
-          containerDiv.className = CONTAINER_CLASSNAME;
-      }
-  });
 
   /* Converts an integer (ms time diff) to a time string of form "Xm Ys" */
   function msToTimeString(ms) {
