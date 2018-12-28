@@ -1,0 +1,54 @@
+/* For tampermonkey website timer */
+
+body {
+  font: normal 16px "Fira Sans", sans-serif;
+}
+
+.container-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 180px;
+  box-sizing: border-box;  /* include margin and border in width */
+  background-color: black;
+  color: wheat;
+  z-index: 20006;
+  transition: 100ms left;
+
+}
+
+.container-div_offset {
+  left: 180px;
+}
+
+#click-move-div {
+  padding: 4px 8px;
+}
+
+p {
+  margin: 0;
+  color: white;
+}
+
+ul {
+  margin: 0;
+  max-height: 30px;
+  overflow-y: scroll;
+  color: wheat;
+}
+
+li {
+  font-size: 13px;
+}
+
+button {
+  height: 24px;
+  color: white;
+  border: 1px solid gray;
+  background-color: #333;
+  border-radius: 2px;
+}
+
+.container-div:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
