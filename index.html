@@ -9,15 +9,22 @@
 </head>
 <body>
   <div id="container-div" class="container-div">
-    <div id="click-move-div">
-      <p id="total-time-p">
+    <div id="inner-container-div">
+      <div id="click-move-div">
+        <p id="total-time-p">
         Total time: <span id="total-time-span"></span>
-      </p>
-      <ul id="laps-list"></ul>
+        </p>
+        <ul id="laps-list"></ul>
+      </div>
+      <button id="lap-button">Lap</button>
+      <input type="checkbox" id="pomo-checkbox">
+      <label for="pomo-checkbox">Alert at 25m</label>
     </div>
-    <button id="lap-button">Lap</button>
-    <input type="checkbox" id="pomo-checkbox">
-    <label for="pomo-checkbox">Alert at 25m</label>
+    <div id="side-container-div">
+      <p title="Time spent updating this page">
+        Total ticks: <span id="total-ticks-span"></span>
+      </p>
+    </div>
   </div>
   <script type="text/javascript" src="./website-timer.js"></script>
 </body>

@@ -2,18 +2,24 @@
 
 (function() {
   let startTime = new Date();
+  /** Total number of times the update function ran.
+   * Represents how long the webpage was running for.
+   */
+  let totalTicks = 0;
 
   const CONTAINER_CLASSNAME = "container-div";
   const CONTAINER_CLASSNAME_OFFSET = "container-div container-div_offset";
 
-  let containerDiv = document.getElementById('container-div');
-  let clickMoveDiv = document.getElementById('click-move-div');
+  let containerDiv  = document.getElementById('container-div');
+  let clickMoveDiv  = document.getElementById('click-move-div');
   let totalTimeSpan = document.getElementById('total-time-span');
-  let lapsList = document.getElementById('laps-list');
+  let lapsList      = document.getElementById('laps-list');
   let p3;
   let currLapTimeSpan;
-  let lapButton = document.getElementById('lap-button');
-  let pomoCheckbox = document.getElementById('pomo-checkbox');
+  let lapButton     = document.getElementById('lap-button');
+  let pomoCheckbox  = document.getElementById('pomo-checkbox');
+  let sideContainerDiv  = document.getElementById('side-container-div');
+  let totalTicksSpan    = document.getElementById('total-ticks-span');
 
   // clicking the button ends the current lap
   let prevLapTime = startTime;
@@ -49,6 +55,11 @@
       if (currLapTimeSpan) {
           currLapTimeSpan.textContent = msToTimeString(Date.now() - prevLapTime);
       }
+      totalTicks++;
+      // Update the total ticks display if visible
+      if (elementVisible(sideContainerDiv)) {
+        totalTicksSpan.textContent = totalTicks;
+      }
   }, 1000);
 
   // Toggle the container's offset when clicked
@@ -68,4 +79,8 @@
     return numMins + "m" + remSeconds + 's';
   }
 
+  /** returns whether or not the DOM element is visible */
+  function elementVisible(element) {
+    return (element.offsetWidth > 0 && element.offsetHeight > 0);
+  }
 })();

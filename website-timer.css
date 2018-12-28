@@ -8,17 +8,35 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 180px;
   box-sizing: border-box;  /* include margin and border in width */
-  background-color: black;
+  background-color: #333;
   color: wheat;
   z-index: 20006;
   transition: 100ms left;
-
 }
+
+.container-div:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.container-div:hover #side-container-div {
+  display: inline-block;
+}
+
 
 .container-div_offset {
   left: 180px;
+}
+
+#inner-container-div {
+  display: inline-block;
+  background-color: black;
+  width: 180px;
+}
+
+#side-container-div {
+  display: none;
+  padding: 4px 8px;
 }
 
 #click-move-div {
@@ -47,8 +65,4 @@ button {
   border: 1px solid gray;
   background-color: #333;
   border-radius: 2px;
-}
-
-.container-div:hover {
-  background-color: rgba(0, 0, 0, 0.8);
 }
