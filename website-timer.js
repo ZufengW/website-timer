@@ -6,6 +6,8 @@
    * Represents how long the webpage was running for.
    */
   let totalTicks = 0;
+  /** Number of ticks during which the page content was partially visible */
+  let totalVisibleTicks = 0;
 
   const CONTAINER_CLASSNAME = "container-div";
   const CONTAINER_CLASSNAME_OFFSET = "container-div container-div_offset";
@@ -20,6 +22,7 @@
   let pomoCheckbox  = document.getElementById('pomo-checkbox');
   let sideContainerDiv  = document.getElementById('side-container-div');
   let totalTicksSpan    = document.getElementById('total-ticks-span');
+  let visibleTicksSpan  = document.getElementById('visible-ticks-span');
 
   // clicking the button ends the current lap
   let prevLapTime = startTime;
@@ -56,9 +59,16 @@
           currLapTimeSpan.textContent = msToTimeString(Date.now() - prevLapTime);
       }
       totalTicks++;
-      // Update the total ticks display if visible
+
+      // Is the page at least partially visible?
+      if (document.visibilityState === 'visible') {
+        totalVisibleTicks++;
+      }
+
+      // Update the total ticks display if the side container visible
       if (elementVisible(sideContainerDiv)) {
         totalTicksSpan.textContent = sToTimeString(totalTicks);
+        visibleTicksSpan.textContent = sToTimeString(totalVisibleTicks);
       }
   }, 1000);
 
