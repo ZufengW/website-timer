@@ -58,7 +58,7 @@
       totalTicks++;
       // Update the total ticks display if visible
       if (elementVisible(sideContainerDiv)) {
-        totalTicksSpan.textContent = totalTicks;
+        totalTicksSpan.textContent = sToTimeString(totalTicks);
       }
   }, 1000);
 
@@ -71,12 +71,16 @@
       }
   });
 
-  /* Converts an integer (ms time difference) to a time string of form "XmYs" */
+  /* Converts an integer (ms time diff) to a time string of form "Xm Ys" */
   function msToTimeString(ms) {
-    var numSeconds = Math.floor(ms / 1000);
-    var numMins = Math.floor(numSeconds / 60);
-    var remSeconds = numSeconds % 60;
-    return numMins + "m" + remSeconds + 's';
+    return sToTimeString(Math.floor(ms / 1000));
+  }
+
+  /* Converts an integer (time diff in seconds) to a string of form "Xm Ys" */
+  function sToTimeString(numSeconds) {
+    let numMins = Math.floor(numSeconds / 60);
+    let remSeconds = numSeconds % 60;
+    return numMins + 'm ' + remSeconds + 's';
   }
 
   /** returns whether or not the DOM element is visible */
